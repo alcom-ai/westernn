@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westera Hotel & Resort - Vahşi Batı Deneyimi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #c59b27;
+            --primary-dark: #997316;
+            --secondary: #2c1d11;
+            --dark: #120d09;
+            --light: #fdfbf7;
+            --card-bg: rgba(44, 29, 17, 0.9);
+            --border: rgba(197, 155, 39, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 13, 9, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--light);
+            font-size: 0.9rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 2px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .qr-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .qr-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(197, 155, 39, 0.4);
+        }
+
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(18, 13, 9, 0.6), rgba(18, 13, 9, 0.8)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e2d9cc;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(197, 155, 39, 0.4);
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #b0a394;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: var(--primary);
+        }
+
+        .card-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-body h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-body p {
+            color: #d1c7bc;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--primary);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        #qrcode {
+            margin: 2rem auto;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            width: fit-content;
+        }
+
+        footer {
+            background: #0c0806;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #9a8c7e;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fas fa-horse-head"></i> WESTERA <span>Hotel & Resort</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">Resort</a></li>
+                <li><a href="#rooms">Odalar</a></li>
+                <li><a href="#activities">Aktiviteler</a></li>
+                <li><a href="#sustainability">Sürdürülebilirlik</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <button class="qr-btn" onclick="openQRModal()"><i class="fas fa-qrcode"></i> Dijital Kart</button>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1>Vahşi Batı'nın Kalbinde Lüks Deneyim</h1>
+            <p>Manavgat'ın eşsiz doğasında, 70 dönüm arazi üzerinde kurulu 300 odalı otantik Vahşi Batı konseptli otelimizde zamansız bir maceraya adım atın.</p>
+            <a href="#rooms" class="btn">Odalarımızı Keşfedin</a>
+        </div>
+    </section>
+
+    <section id="rooms">
+        <h2 class="section-title">Konaklama Deneyimi</h2>
+        <p class="section-subtitle">Özel Tasarlanmış Odalarımız</p>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-body">
+                    <h3>Şerif Süiti</h3>
+                    <p>Otantik deri detaylar, özel el yapımı ahşap mobilyalar ve geniş oturma alanı ile konforu ve prestiji bir arada yaşayın.</p>
+                    <a href="#contact" class="btn" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">Rezervasyon</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-body">
+                    <h3>Çiftlik Evi Odası</h3>
+                    <p>Doğayla iç içe, sıcak tonların hâkim olduğu, huzur dolu manzaralı rustik dekorasyonlu konforlu odalar.</p>
+                    <a href="#contact" class="btn" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">Rezervasyon</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-body">
+                    <h3>Saloon Deluxe</h3>
+                    <p>Vahşi Batı'nın hareketli ruhunu yansıtan, merkezi konumda yer alan şık ve modern donanımlı oda seçeneği.</p>
+                    <a href="#contact" class="btn" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">Rezervasyon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities">
+        <h2 class="section-title">Aktiviteler & Eğlence</h2>
+        <p class="section-subtitle">Sınır Tanımayan Maceralar</p>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-body">
+                    <h3>At Binicilik Turları</h3>
+                    <p>Deneyimli eğitmenler eşliğinde Akdeniz doğasında unutulmaz manej ve doğa turları.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-body">
+                    <h3>Biyolojik Yüzme Göleti</h3>
+                    <p>Kimyasal kullanılmayan, doğal bitkilerle arıtılan eşsiz biyolojik yüzme havuzumuzda serinleyin.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="card-body">
+                    <h3>Saloon Geceleri & Canlı Müzik</h3>
+                    <p>Country ritimleri ve özel atölyelerle Vahşi Batı atmosferini doyasıya yaşayın.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sustainability">
+        <h2 class="section-title">Sürdürülebilirlik</h2>
+        <p class="section-subtitle">Doğaya Saygılı Lüks Yaşam</p>
+        <div class="card" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+            <div class="card-body">
+                <h3>Xeriscape Peyzaj & Yağmur Suyu Hasadı</h3>
+                <p>Westera Hotel & Resort olarak su kaynaklarını koruyor; kurakçıl peyzaj (xeriscape) uygulamaları ve gelişmiş yağmur suyu hasat sistemlerimizle doğanın dengesini koruyarak geleceğe yatırım yapıyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">İletişim</h2>
+        <p class="section-subtitle">Bize Ulaşın</p>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto; color: #d1c7bc;">
+            <p><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Kızılot Mah., Manavgat / Antalya</p>
+            <p style="margin-top: 1rem;"><i class="fas fa-phone" style="color: var(--primary);"></i> +90 (242) 000 00 00</p>
+            <p style="margin-top: 1rem;"><i class="fas fa-envelope" style="color: var(--primary);"></i> info@westeraresort.com</p>
+        </div>
+    </section>
+
+    <!-- QR Modal -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeQRModal()">&times;</button>
+            <h3 style="color: var(--primary); font-family: 'Cinzel', serif; margin-bottom: 0.5rem;">Dijital Kart</h3>
+            <p style="color: #b0a394; font-size: 0.9rem;">Westera Hotel & Resort dijital deneyim kartı için QR kodu taratın.</p>
+            <div id="qrcode"></div>
+            <p style="font-size: 0.8rem; color: #73675c;">westeraresort.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Westera Hotel & Resort. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        function openQRModal() {
+            document.getElementById('qrModal').style.display = 'flex';
+            const qrContainer = document.getElementById('qrcode');
+            if(qrContainer.childElementCount === 0) {
+                new QRCode(qrContainer, {
+                    text: "https://westeraresort.com",
+                    width: 180,
+                    height: 180,
+                    colorDark: "#120d09",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('qrModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
